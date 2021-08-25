@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.example.app.idempotency.config.Config
+  com.example.app.idempotency.config.Config,\
+  com.example.app.idempotency.advice.AppExceptionHandlerConfig

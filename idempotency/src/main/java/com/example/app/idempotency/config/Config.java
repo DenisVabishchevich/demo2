@@ -1,6 +1,5 @@
 package com.example.app.idempotency.config;
 
-import com.example.app.idempotency.advice.AppExceptionHandler;
 import com.example.app.idempotency.advice.CacheResponseFilter;
 import com.example.app.idempotency.interceptor.IdempotencyInterceptor;
 import com.example.app.idempotency.repository.IdempotencyRepository;
@@ -28,11 +27,6 @@ public class Config {
     @Bean
     CacheResponseFilter cacheResponseFilter() {
         return new CacheResponseFilter();
-    }
-
-    @Bean
-    AppExceptionHandler appExceptionHandler(IdempotencyService idempotencyService) {
-        return new AppExceptionHandler(idempotencyService);
     }
 
 }
