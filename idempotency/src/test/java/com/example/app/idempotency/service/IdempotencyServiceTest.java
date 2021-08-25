@@ -46,9 +46,8 @@ class IdempotencyServiceTest {
         idempotency2.setIdempotencyKey(idempotencyId);
 
         idempotencyService.createIdempotency(idempotency1);
-        Assertions.assertThatThrownBy(() -> {
-            idempotencyService.createIdempotency(idempotency2);
-        }).isInstanceOf(IdempotencyAlreadyPresentException.class);
+        Assertions.assertThatThrownBy(() -> idempotencyService.createIdempotency(idempotency2))
+            .isInstanceOf(IdempotencyAlreadyPresentException.class);
     }
 
 }

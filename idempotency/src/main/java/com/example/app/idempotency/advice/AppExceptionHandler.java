@@ -1,4 +1,4 @@
-package com.example.app.simple.advice;
+package com.example.app.idempotency.advice;
 
 import com.example.app.idempotency.domain.Idempotency;
 import com.example.app.idempotency.exception.IdempotencyIsEmptyException;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 
-import static com.example.app.simple.interceptor.IdempotencyInterceptor.IDEMPOTENCY_KEY;
+import static com.example.app.idempotency.interceptor.IdempotencyInterceptor.IDEMPOTENCY_KEY;
 
 @RestControllerAdvice
 @RequiredArgsConstructor

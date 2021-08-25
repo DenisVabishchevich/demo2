@@ -1,10 +1,9 @@
-package com.example.app.simple.interceptor;
+package com.example.app.idempotency.interceptor;
 
 import com.example.app.idempotency.domain.Idempotency;
 import com.example.app.idempotency.exception.IdempotencyIsEmptyException;
 import com.example.app.idempotency.service.IdempotencyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
-@Component
 @RequiredArgsConstructor
 public class IdempotencyInterceptor implements HandlerInterceptor {
 
