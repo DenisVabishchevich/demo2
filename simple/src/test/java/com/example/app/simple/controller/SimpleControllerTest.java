@@ -50,7 +50,6 @@ class SimpleControllerTest {
     @Test
     void getSimpleDataRestDifferentKeysTest() throws Exception {
 
-
         mockMvc.perform(get("/api/v1/data")
             .header("Idempotency-Key", UUID.randomUUID().toString()))
             .andDo(print())

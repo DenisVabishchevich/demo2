@@ -20,6 +20,6 @@ public class SimpleController {
 
     @GetMapping("/errors")
     public MockDto getSomeError() {
-        throw new IllegalStateException("error");
+        throw new IllegalStateException("Controller error");
     }
 }

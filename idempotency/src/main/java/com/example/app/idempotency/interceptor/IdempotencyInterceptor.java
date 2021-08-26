@@ -5,8 +5,6 @@ import com.example.app.idempotency.exception.IdempotencyIsEmptyException;
 import com.example.app.idempotency.service.IdempotencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,18 +43,4 @@ public class IdempotencyInterceptor implements HandlerInterceptor {
 
     }
 
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        String idempotencyKey = request.getHeader(IDEMPOTENCY_KEY);
-        Idempotency idempotency = new Idempotency();
-        idempotency.setIdempotencyKey(idempotencyKey);
-
-        ContentCachingResponseWrapper wrapper = (ContentCachingResponseWrapper) response;
-        idempotency.setContent(new String(wrapper.getContentAsByteArray(), wrapper.getCharacterEncoding()));
-        idempotency.setStatus(wrapper.getStatus());
-
-        idempotencyService.createIdempotency(idempotency);
-
-        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-    }
 }
